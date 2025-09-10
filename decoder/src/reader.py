@@ -1,13 +1,32 @@
 import serial
 
+# ser = serial.Serial(
+#     port='/dev/ttyUSB0', 
+#     baudrate=9600, 
+#     bytesize=serial.EIGHTBITS,
+#     parity=serial.PARITY_NONE,
+#     stopbits=serial.STOPBITS_ONE,
+#     timeout=1
+# )
+
 ser = serial.Serial(
-    port='/dev/ttyUSB0', 
+    port='COM4',  # Вкажіть ваш COM-порт
     baudrate=9600, 
     bytesize=serial.EIGHTBITS,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     timeout=1
 )
+
+sent = serial.Serial(
+    port='COM3',  # Вкажіть ваш COM-порт
+    baudrate=9600, 
+    bytesize=serial.EIGHTBITS,
+    parity=serial.PARITY_NONE,
+    stopbits=serial.STOPBITS_ONE,
+    timeout=1
+)
+
 
 def reader():
     storage_list = list()
@@ -52,3 +71,9 @@ def get_pressure_from_byte(storage_list):
         # Формула з Wheel: pressure = 0.04 * byte_val - 7.62
         return byte_val
     return 0
+
+def sent_data(sent_list):
+    if sent_list:
+        byte_data = bytearray(sent_list)
+        sent.write(byte_data)
+        sent.flush()  # Ensure all data is sent

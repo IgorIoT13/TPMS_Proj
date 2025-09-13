@@ -24,12 +24,18 @@ def main():
             # wheel3.check_by_id(bytes_data)
             # wheel4.check_by_id(bytes_data)
 
+            print(f"Wheel 1 Pressure: {wheel1.get_pressure():.2f} atm")
+            print(f"Wheel 2 Pressure: {wheel2.get_pressure():.2f} atm")
+            print("-----")
+
             if data != wheel1.get_pressure():
+                print(f"Wheel 1 update {data:.2f} atm")
                 data = wheel1.get_pressure()
                 print(f"Wheel 1 Pressure: {data:.2f} atm")
                 sent_data(get_ready_message("1", f"{data:.2f} atm"))
 
             if data2 != wheel2.get_pressure():
+                print(f"Wheel 2 update {data2:.2f} atm")
                 data2 = wheel2.get_pressure()
                 print(f"Wheel 2 Pressure: {data2:.2f} atm")
                 sent_data(get_ready_message("2", f"{data2:.2f} atm")) 

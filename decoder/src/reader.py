@@ -10,7 +10,7 @@ import serial
 # )
 
 ser = serial.Serial(
-    port='COM4',  # Вкажіть ваш COM-порт
+    port='/dev/ttyUSB1',  # Вкажіть ваш COM-порт
     baudrate=9600, 
     bytesize=serial.EIGHTBITS,
     parity=serial.PARITY_NONE,
@@ -19,7 +19,7 @@ ser = serial.Serial(
 )
 
 sent = serial.Serial(
-    port='COM3',  # Вкажіть ваш COM-порт
+    port='/dev/ttyUSB0',  # Вкажіть ваш COM-порт
     baudrate=9600, 
     bytesize=serial.EIGHTBITS,
     parity=serial.PARITY_NONE,

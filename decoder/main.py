@@ -6,10 +6,10 @@ from wheel import Wheel
 
 app = Flask(__name__)
 
-wheel_1 = Wheel(1, '../gen_data/wheel_1.txt')
-wheel_2 = Wheel(2, '../gen_data/wheel_2.txt')
-wheel_3 = Wheel(3, '../gen_data/wheel_3.txt')
-wheel_4 = Wheel(4, '../gen_data/wheel_4.txt')
+wheel_1 = Wheel(1, '../gen_data/wheel_1.txt', 1.4)
+wheel_2 = Wheel(2, '../gen_data/wheel_2.txt', 1.4)
+wheel_3 = Wheel(3, '../gen_data/wheel_3.txt', 2.5)
+wheel_4 = Wheel(4, '../gen_data/wheel_4.txt', 2.3)
 
 
 @app.route("/wheels/<int:id>")

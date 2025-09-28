@@ -11,6 +11,11 @@ class Wheel:
     def get_value(self):
         return float(self.read())
     
+    def set_pressure(self, pressure):
+        with open(self.file_name, 'w') as file:
+            file.write(f"{pressure:.2f}")
+        self.value = pressure
+    
     def json(self):
         return {
             'id': self.id,

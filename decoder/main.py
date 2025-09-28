@@ -3,7 +3,7 @@ from flask import Flask
 import threading
 
 from wheel import Wheel
-from .test import main_thread
+from test import main_thread
 
 app = Flask(__name__)
 
@@ -18,6 +18,19 @@ def get_wheel(id):
     wheels = [wheel_1, wheel_2, wheel_3, wheel_4]
     wheel = next((w for w in wheels if w.id == id), None)
     if wheel:
+        return wheel.json()
+    return {"error": "Wheel not found"}, 404
+
+@app.route("/wheels_edit/<int:id>/<pressure>")
+def edit_wheel(id, pressure):
+    try:
+        pressure = float(pressure)
+    except ValueError:
+        return {"error": "Invalid pressure value"}, 400
+    wheels = [wheel_1, wheel_2, wheel_3, wheel_4]
+    wheel = next((w for w in wheels if w.id == id), None)
+    if wheel:
+        wheel.set_pressure(pressure)
         return wheel.json()
     return {"error": "Wheel not found"}, 404
 

@@ -3,7 +3,6 @@ from flask import Flask
 import threading
 
 from wheel import Wheel
-from test import main_thread
 
 app = Flask(__name__)
 
